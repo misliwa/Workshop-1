@@ -84,6 +84,17 @@ public class TaskManager {
     }
 
     private static void addTaskMode() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Please add task description: ");
+        String descriptionInput = scanner.nextLine();
+
+        while(descriptionInput.contains(", ")) {
+            System.out.println("Descrition contains illegal expression ', '. Please add correct description: ");
+            descriptionInput = scanner.nextLine();
+        }
+
+
 
     }
 
@@ -97,6 +108,13 @@ public class TaskManager {
     }
 
     private static void exitProgram(){
+        saveChangesToFile();
+        System.out.println(ConsoleColors.RED + EXIT_PROGRAM_MSG);
     }
+
+    private static void saveChangesToFile() {
+
+    }
+
 
 }

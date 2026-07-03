@@ -6,4 +6,6 @@ public class StringConstants {
     public static final String SAVE_FILE_NOT_EXIST_MSG = "Save file does not exist. Creating new save file";
 
     public static final String SAVE_FILE_CREATED_MSG = "New save file created!";
+
+    public static final String EXIT_PROGRAM_MSG = "Bye, bye.";
 }
