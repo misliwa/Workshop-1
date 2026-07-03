@@ -31,4 +31,6 @@ public class StringConstants {
 
     public static final String TASK_REMOVE_SUCCESS_MSG = "Task successfully removed.";
 
+    public static final String TASKS_SAVE_FAILED_MSG = "Saving new tasks failed.";
+
 }

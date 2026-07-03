@@ -148,12 +148,17 @@ public class TaskManager {
     }
 
     private static void exitProgram(){
-        saveChangesToFile();
+        try {
+            saveChangesToFile();
+        }catch (IOException e){
+            System.out.println(TASKS_SAVE_FAILED_MSG);
+        }
         System.out.println(ConsoleColors.RED + EXIT_PROGRAM_MSG);
     }
 
-    private static void saveChangesToFile() {
-
+    private static void saveChangesToFile() throws IOException{
+        List<String> linesToSave = tasks.stream().map(Task::toSaveFileLine).toList();
+        Files.write(SAVED_TASKS_PATH, linesToSave);
     }
 
     private static boolean isValidDate(String stringDate){
