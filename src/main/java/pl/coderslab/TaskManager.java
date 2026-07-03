@@ -103,7 +103,16 @@ public class TaskManager {
             dueDateInput = scanner.nextLine();
         }
 
+        System.out.println("Is your task important? true/false: ");
+        String priorityInput = scanner.nextLine();
+        while(!"true".equals(priorityInput) && !"false".equals(priorityInput)) {
+            System.out.println("Date is not correct. Please add due date in format rrrr-mm-dd: ");
+            priorityInput = scanner.nextLine();
+        }
 
+        Task createdTask = new Task(descriptionInput, dueDateInput, priorityInput);
+        tasks.add(createdTask);
+        printAllTasks();
     }
 
     private static void removeTaskMode() {
