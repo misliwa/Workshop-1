@@ -114,7 +114,6 @@ public class TaskManager {
 
         Task createdTask = new Task(descriptionInput, dueDateInput, priorityInput);
         tasks.add(createdTask);
-        printAllTasks();
     }
 
     private static void removeTaskMode() {
