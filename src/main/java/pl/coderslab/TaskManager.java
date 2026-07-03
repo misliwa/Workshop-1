@@ -4,6 +4,8 @@ import pl.coderslab.enums.MenuItem;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -90,10 +92,16 @@ public class TaskManager {
         String descriptionInput = scanner.nextLine();
 
         while(descriptionInput.contains(", ")) {
-            System.out.println("Descrition contains illegal expression ', '. Please add correct description: ");
+            System.out.println("Description contains illegal expression ', '. Please add correct description: ");
             descriptionInput = scanner.nextLine();
         }
 
+        System.out.println("Please add task due date in format rrrr-mm-dd: ");
+        String dueDateInput = scanner.nextLine();
+        while(!isValidDate(dueDateInput)) {
+            System.out.println("Date is not correct. Please add due date in format rrrr-mm-dd: ");
+            dueDateInput = scanner.nextLine();
+        }
 
 
     }
@@ -114,6 +122,16 @@ public class TaskManager {
 
     private static void saveChangesToFile() {
 
+    }
+
+    private static boolean isValidDate(String stringDate){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        try{
+            LocalDate date = LocalDate.parse(stringDate, formatter);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
 
