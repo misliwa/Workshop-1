@@ -1,5 +1,6 @@
 package pl.coderslab;
 
+import pl.coderslab.constants.ConsoleColors;
 import pl.coderslab.constants.FormatConstants;
 
 import java.time.LocalDate;
@@ -20,14 +21,5 @@ public class Task {
         String importanceString = Boolean.toString(important);
 
         return "%s, %s, %s".formatted(name, dueDateString, importanceString);
-    }
-
-    @Override
-    public String toString() {
-        return "Task{" +
-                "name='" + name + '\'' +
-                ", dueDate='" + dueDate + '\'' +
-                ", important='" + important + '\'' +
-                '}';
     }
 }

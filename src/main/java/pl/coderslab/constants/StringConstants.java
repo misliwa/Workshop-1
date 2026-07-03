@@ -27,7 +27,7 @@ public class StringConstants {
     public static final String REMOVE_TASK_MSG = "Please select number to remove. Type '%s' to cancel: "
             .formatted(CANCEL_COMMAND);
 
-    public static final String INCORRECT_TASK_REMOVE_INPUT_MSG = "Incorrect task number.";
+    public static final String INCORRECT_TASK_REMOVE_INPUT_MSG = "Incorrect task number passed.";
 
     public static final String TASK_REMOVE_SUCCESS_MSG = "Task successfully removed.";
 

@@ -1,6 +1,7 @@
 package pl.coderslab;
 
 import org.apache.commons.lang3.math.NumberUtils;
+import pl.coderslab.constants.ConsoleColors;
 import pl.coderslab.constants.FormatConstants;
 import pl.coderslab.enums.MenuItem;
 
@@ -169,6 +170,4 @@ public class TaskManager {
             return false;
         }
     }
-
-
 }
