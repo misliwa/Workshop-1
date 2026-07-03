@@ -9,9 +9,9 @@ public class StringConstants {
 
     public static final String EXIT_PROGRAM_MSG = "Bye, bye.";
 
-    public static final String ADD_TASK_DESCRIPTION_MSG = "Please add task description (don't use ', '): ";
+    public static final String ADD_TASK_DESCRIPTION_MSG = "Please add task description (don't use ','): ";
 
-    public static final String INCORRECT_TASK_DESCRIPTION_MSG = "Description contains illegal expression ', '.";
+    public static final String INCORRECT_TASK_DESCRIPTION_MSG = "Description contains illegal expression ','.";
 
     public static final String ADD_TASK_DUE_DATE_MSG = "Please add due date in format %s: "
             .formatted(FormatConstants.APP_DATE_FORMAT_AS_STRING);

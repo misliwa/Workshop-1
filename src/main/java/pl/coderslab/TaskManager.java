@@ -93,7 +93,7 @@ public class TaskManager {
         System.out.println(ADD_TASK_DESCRIPTION_MSG);
         String descriptionInput = scanner.nextLine();
 
-        while(descriptionInput.contains(", ")) {
+        while(descriptionInput.contains(",")) {
             System.out.println(INCORRECT_TASK_DESCRIPTION_MSG + " " + ADD_TASK_DESCRIPTION_MSG);
             descriptionInput = scanner.nextLine();
         }
