@@ -21,12 +21,11 @@ public class TaskManager {
     static void main() {
         try {
             prepareFiles();
+            launchMenu();
         } catch (IOException e) {
             System.out.println("Data loading error: " + e.getMessage());
             System.out.println("Closing app.");
         }
-
-        launchMenu();
     }
 
     private static void prepareFiles() throws IOException{
@@ -44,16 +43,16 @@ public class TaskManager {
     private static void loadSavedTasksData() throws IOException {
             List<String> lines = Files.readAllLines(SAVED_TASKS_PATH);
             for (String line : lines) {
-                String[] dataRow = line.split("\\s*" + SEPARATOR + "\\s+");
+                String[] dataRow = line.split("\\s*" + SEPARATOR + "\\s*");
                 tasks.add(new Task(dataRow[0], dataRow[1], dataRow[2]));
             }
     }
 
     private static void launchMenu() {
         MenuItem pickedMode;
+        boolean menuRunning = true;
 
-        programloop:
-        while(true) {
+        while(menuRunning) {
             printMenuItems();
             try {
                 pickedMode = pickMenuOption();
@@ -63,11 +62,11 @@ public class TaskManager {
                     case MenuItem.LIST -> printAllTasks();
                     case MenuItem.EXIT -> {
                         exitProgram();
-                        break programloop;
+                        menuRunning = false;
                     }
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println("Please select a correct option.");
+                System.out.println(INCORRECT_MENU_OPTION_PICKED_MSG);
             }
         }
     }
@@ -133,11 +132,12 @@ public class TaskManager {
                     tasks.remove(taskNumber);
                     System.out.println(TASK_REMOVE_SUCCESS_MSG);
                     break;
-                }else{
-                    System.out.println(INCORRECT_TASK_REMOVE_INPUT_MSG + " " + REMOVE_TASK_MSG);
-                    removeInput = scanner.nextLine();
                 }
             }
+
+            System.out.println(INCORRECT_TASK_REMOVE_INPUT_MSG + " " + REMOVE_TASK_MSG);
+            removeInput = scanner.nextLine();
+
         }
     }
 

@@ -5,6 +5,8 @@ public class StringConstants {
 
     public static final String MENU_HEADLINE = "Please select an option:";
 
+    public static final String INCORRECT_MENU_OPTION_PICKED_MSG = "Please select a correct option.";
+
     public static final String SAVE_FILE_NOT_EXIST_MSG = "Save file does not exist. Creating new save file";
 
     public static final String SAVE_FILE_CREATED_MSG = "New save file created!";
