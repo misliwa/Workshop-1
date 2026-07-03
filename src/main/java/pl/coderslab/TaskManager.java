@@ -1,11 +1,11 @@
 package pl.coderslab;
 
+import pl.coderslab.constants.FormatConstants;
 import pl.coderslab.enums.MenuItem;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -134,9 +134,8 @@ public class TaskManager {
     }
 
     private static boolean isValidDate(String stringDate){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         try{
-            LocalDate date = LocalDate.parse(stringDate, formatter);
+            LocalDate date = LocalDate.parse(stringDate, FormatConstants.APP_DATE_FORMAT);
             return true;
         }catch (Exception e){
             return false;

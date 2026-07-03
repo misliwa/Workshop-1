@@ -1,44 +1,25 @@
 package pl.coderslab;
 
+import pl.coderslab.constants.FormatConstants;
+
 import java.time.LocalDate;
 
 public class Task {
     private String name;
-    private String dueDate;
-    private String important;
+    private LocalDate dueDate;
+    private boolean important;
 
     public Task(String name, String dueDate, String important) {
         this.name = name;
-        this.dueDate = dueDate;
-        this.important = important;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    public String isImportant() {
-        return important;
-    }
-
-    public void setImportant(String important) {
-        this.important = important;
+        this.dueDate = LocalDate.parse(dueDate, FormatConstants.APP_DATE_FORMAT);
+        this.important = Boolean.parseBoolean(important);
     }
 
     public String toSaveFileLine(){
-        return "%s, %s, %s".formatted(name, dueDate, important);
+        String dueDateString = dueDate.toString();
+        String importanceString = Boolean.toString(important);
+
+        return "%s, %s, %s".formatted(name, dueDateString, importanceString);
     }
 
     @Override
