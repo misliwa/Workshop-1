@@ -2,11 +2,13 @@ package pl.coderslab;
 
 import pl.coderslab.constants.PathConstants;
 import pl.coderslab.constants.StringConstants;
+import pl.coderslab.enums.MenuItems;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static pl.coderslab.constants.StringConstants.*;
 import static pl.coderslab.constants.PathConstants.*;
@@ -21,7 +23,7 @@ public class TaskManager {
             System.out.println("Data loading error: " + e.getMessage());
             System.out.println("Closing app.");
         }
-        
+
         showMenu();
     }
 
@@ -54,8 +56,32 @@ public class TaskManager {
     private static void showMenu() {
         System.out.println(ConsoleColors.BLUE + MENU_HEADLINE);
         System.out.print(ConsoleColors.RESET);
-        for(String menuItem : MENU_ITEMS){
-            System.out.println(menuItem);
+        for(MenuItems menuItem : MenuItems.values()){
+            System.out.println(menuItem.toString().toLowerCase());
         }
+        chooseMenuOption();
+    }
+
+    private static void chooseMenuOption(){
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        MenuItems pickedMode = MenuItems.valueOf(input.toUpperCase());
+
+        switch (pickedMode) {
+            case MenuItems.ADD:
+               // addTask();
+                break;
+            case MenuItems.REMOVE:
+                break;
+            case MenuItems.LIST:
+                break;
+            case MenuItems.EXIT:
+                break;
+            default:
+                System.out.println("Please select a correct option.");
+        }
+
+
+
     }
 }
