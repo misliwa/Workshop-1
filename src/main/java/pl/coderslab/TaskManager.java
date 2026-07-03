@@ -92,21 +92,21 @@ public class TaskManager {
         String descriptionInput = scanner.nextLine();
 
         while(descriptionInput.contains(", ")) {
-            System.out.println("Description contains illegal expression ', '." + ADD_TASK_DESCRIPTION_MSG);
+            System.out.println(INCORRECT_TASK_DESCRIPTION_MSG + " " + ADD_TASK_DESCRIPTION_MSG);
             descriptionInput = scanner.nextLine();
         }
 
         System.out.println(ADD_TASK_DUE_DATE_MSG);
         String dueDateInput = scanner.nextLine();
         while(!isValidDate(dueDateInput)) {
-            System.out.println("Date is not correct." + ADD_TASK_DUE_DATE_MSG);
+            System.out.println(INCORRECT_DUE_DATE_DESCRIPTION_MSG + " " + ADD_TASK_DUE_DATE_MSG);
             dueDateInput = scanner.nextLine();
         }
 
         System.out.println(ADD_TASK_IMPORTANCE_MSG);
         String priorityInput = scanner.nextLine();
         while(!"true".equals(priorityInput) && !"false".equals(priorityInput)) {
-            System.out.println("Input is not correct." + ADD_TASK_IMPORTANCE_MSG);
+            System.out.println(INCORRECT_TASK_IMPORTANCE_MSG + " " + ADD_TASK_IMPORTANCE_MSG);
             priorityInput = scanner.nextLine();
         }
 
@@ -116,6 +116,11 @@ public class TaskManager {
     }
 
     private static void removeTaskMode() {
+        System.out.println(ADD_TASK_IMPORTANCE_MSG);
+        String removeInput = scanner.nextLine();
+        while() {
+
+        }
     }
 
     private static void printAllTasks(){
