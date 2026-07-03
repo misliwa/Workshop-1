@@ -9,4 +9,8 @@ public class StringConstants {
             "list",
             "exit"
     };
+
+    public static final String SAVE_FILE_NOT_EXIST_MSG = "Save file does not exist. Creating new save file";
+
+    public static final String SAVE_FILE_CREATED_MSG = "New save file created!";
 }
