@@ -1,6 +1,6 @@
 package pl.coderslab.enums;
 
-public enum MenuItems {
+public enum MenuItem {
     ADD,
     REMOVE,
     LIST,

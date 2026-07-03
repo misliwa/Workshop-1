@@ -1,8 +1,6 @@
 package pl.coderslab;
 
-import pl.coderslab.constants.PathConstants;
-import pl.coderslab.constants.StringConstants;
-import pl.coderslab.enums.MenuItems;
+import pl.coderslab.enums.MenuItem;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -24,7 +22,7 @@ public class TaskManager {
             System.out.println("Closing app.");
         }
 
-        showMenu();
+        launchMenu();
     }
 
     private static void prepareFiles() throws IOException{
@@ -47,41 +45,58 @@ public class TaskManager {
             }
     }
 
+    private static void launchMenu() {
+        MenuItem pickedMode;
+
+        programloop:
+        while(true) {
+            printMenuItems();
+            try {
+                pickedMode = pickMenuOption();
+                switch (pickedMode) {
+                    case MenuItem.ADD -> addTaskMode();
+                    case MenuItem.REMOVE -> removeTaskMode();
+                    case MenuItem.LIST -> printAllTasks();
+                    case MenuItem.EXIT -> {
+                        exitProgram();
+                        break programloop;
+                    }
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println("Please select a correct option.");
+            }
+        }
+    }
+
+    private static void printMenuItems(){
+        System.out.println(ConsoleColors.BLUE + MENU_HEADLINE);
+        System.out.print(ConsoleColors.RESET);
+        for(MenuItem menuItem : MenuItem.values()){
+            System.out.println(menuItem.toString().toLowerCase());
+        }
+    }
+
+    private static MenuItem pickMenuOption(){
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+
+        return MenuItem.valueOf(input.toUpperCase());
+    }
+
+    private static void addTaskMode() {
+
+    }
+
+    private static void removeTaskMode() {
+    }
+
     private static void printAllTasks(){
         for(Task task : tasks){
             System.out.println(task.toSaveFileLine());
         }
     }
 
-    private static void showMenu() {
-        System.out.println(ConsoleColors.BLUE + MENU_HEADLINE);
-        System.out.print(ConsoleColors.RESET);
-        for(MenuItems menuItem : MenuItems.values()){
-            System.out.println(menuItem.toString().toLowerCase());
-        }
-        chooseMenuOption();
+    private static void exitProgram(){
     }
 
-    private static void chooseMenuOption(){
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        MenuItems pickedMode = MenuItems.valueOf(input.toUpperCase());
-
-        switch (pickedMode) {
-            case MenuItems.ADD:
-               // addTask();
-                break;
-            case MenuItems.REMOVE:
-                break;
-            case MenuItems.LIST:
-                break;
-            case MenuItems.EXIT:
-                break;
-            default:
-                System.out.println("Please select a correct option.");
-        }
-
-
-
-    }
 }
