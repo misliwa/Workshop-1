@@ -1,5 +1,6 @@
 package pl.coderslab;
 
+import org.apache.commons.lang3.math.NumberUtils;
 import pl.coderslab.constants.FormatConstants;
 import pl.coderslab.enums.MenuItem;
 
@@ -14,7 +15,7 @@ import static pl.coderslab.constants.StringConstants.*;
 import static pl.coderslab.constants.PathConstants.*;
 
 public class TaskManager {
-    private static List<Task> tasks = new ArrayList<>();
+    private static ArrayList<Task> tasks = new ArrayList<>();
 
     static void main() {
         try {
@@ -116,16 +117,33 @@ public class TaskManager {
     }
 
     private static void removeTaskMode() {
-        System.out.println(ADD_TASK_IMPORTANCE_MSG);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(REMOVE_TASK_MSG);
         String removeInput = scanner.nextLine();
-        while() {
 
+        while(true) {
+            if(CANCEL_COMMAND.equals(removeInput)){
+                break;
+            }
+
+            if(NumberUtils.isParsable(removeInput)){
+                int taskNumber = Integer.parseInt(removeInput);
+
+                if(taskNumber >= 0 && taskNumber < tasks.size()){
+                    tasks.remove(taskNumber);
+                    System.out.println(TASK_REMOVE_SUCCESS_MSG);
+                    break;
+                }else{
+                    System.out.println(INCORRECT_TASK_REMOVE_INPUT_MSG + " " + REMOVE_TASK_MSG);
+                    removeInput = scanner.nextLine();
+                }
+            }
         }
     }
 
     private static void printAllTasks(){
         for(Task task : tasks){
-            System.out.println(task.toSaveFileLine());
+            System.out.println(tasks.indexOf(task) + ": " + task.toSaveFileLine());
         }
     }
 

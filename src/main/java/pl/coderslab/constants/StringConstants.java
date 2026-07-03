@@ -14,7 +14,7 @@ public class StringConstants {
     public static final String INCORRECT_TASK_DESCRIPTION_MSG = "Description contains illegal expression ', '.";
 
     public static final String ADD_TASK_DUE_DATE_MSG = "Please add due date in format %s: "
-            .formatted(FormatConstants.APP_DATE_FORMAT.toString());
+            .formatted(FormatConstants.APP_DATE_FORMAT_AS_STRING);
 
     public static final String INCORRECT_DUE_DATE_DESCRIPTION_MSG = "Date is not correct.";
 
@@ -22,7 +22,13 @@ public class StringConstants {
 
     public static final String INCORRECT_TASK_IMPORTANCE_MSG = "Provided importance is incorrect.";
 
-    public static final String REMOVE_TASK_MSG = "Please select number to remove. T"
+    public static final String CANCEL_COMMAND = "cancel";
 
+    public static final String REMOVE_TASK_MSG = "Please select number to remove. Type '%s' to cancel: "
+            .formatted(CANCEL_COMMAND);
+
+    public static final String INCORRECT_TASK_REMOVE_INPUT_MSG = "Incorrect task number.";
+
+    public static final String TASK_REMOVE_SUCCESS_MSG = "Task successfully removed.";
 
 }
