@@ -44,7 +44,7 @@ public class TaskManager {
     private static void loadSavedTasksData() throws IOException {
             List<String> lines = Files.readAllLines(SAVED_TASKS_PATH);
             for (String line : lines) {
-                String[] dataRow = line.split(", ");
+                String[] dataRow = line.split("\\s*" + SEPARATOR + "\\s+");
                 tasks.add(new Task(dataRow[0], dataRow[1], dataRow[2]));
             }
     }
@@ -93,7 +93,7 @@ public class TaskManager {
         System.out.println(ADD_TASK_DESCRIPTION_MSG);
         String descriptionInput = scanner.nextLine();
 
-        while(descriptionInput.contains(",")) {
+        while(descriptionInput.contains(SEPARATOR)) {
             System.out.println(INCORRECT_TASK_DESCRIPTION_MSG + " " + ADD_TASK_DESCRIPTION_MSG);
             descriptionInput = scanner.nextLine();
         }
