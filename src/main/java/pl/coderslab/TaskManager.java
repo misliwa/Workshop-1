@@ -88,25 +88,25 @@ public class TaskManager {
     private static void addTaskMode() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Please add task description: ");
+        System.out.println(ADD_TASK_DESCRIPTION_MSG);
         String descriptionInput = scanner.nextLine();
 
         while(descriptionInput.contains(", ")) {
-            System.out.println("Description contains illegal expression ', '. Please add correct description: ");
+            System.out.println("Description contains illegal expression ', '." + ADD_TASK_DESCRIPTION_MSG);
             descriptionInput = scanner.nextLine();
         }
 
-        System.out.println("Please add task due date in format rrrr-mm-dd: ");
+        System.out.println(ADD_TASK_DUE_DATE_MSG);
         String dueDateInput = scanner.nextLine();
         while(!isValidDate(dueDateInput)) {
-            System.out.println("Date is not correct. Please add due date in format rrrr-mm-dd: ");
+            System.out.println("Date is not correct." + ADD_TASK_DUE_DATE_MSG);
             dueDateInput = scanner.nextLine();
         }
 
-        System.out.println("Is your task important? true/false: ");
+        System.out.println(ADD_TASK_IMPORTANCE_MSG);
         String priorityInput = scanner.nextLine();
         while(!"true".equals(priorityInput) && !"false".equals(priorityInput)) {
-            System.out.println("Date is not correct. Please add due date in format rrrr-mm-dd: ");
+            System.out.println("Input is not correct." + ADD_TASK_IMPORTANCE_MSG);
             priorityInput = scanner.nextLine();
         }
 
